@@ -1,0 +1,25 @@
+.teks {
+  font-weight: 900 !important;
+}
+
+.user-panel {
+  overflow: visible;
+}
+
+.dropdown-item:hover {
+  color: black !important;
+}
+
+.dropdown-item:active {
+  color: white !important;
+}
+
+.modedark .user-panel .dropdown-item {
+  color: #fff !important;
+}
+
+@media screen and (max-width: 576px) {
+  .tes {
+    margin-top: 0px !important;
+  }
+}
