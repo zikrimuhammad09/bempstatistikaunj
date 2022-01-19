@@ -8,8 +8,7 @@ if (isset($_POST["submit"])) {
     $cek = login("SELECT * FROM admin WHERE username = '$username' AND password = '$password'");
     if (mysqli_num_rows($cek) > 0) {
         $_SESSION["login"] = True;
-        header("Location: index.php");
-        exit();
+        $berhasil = True;
     } else {
         $error = True;
     }
@@ -34,11 +33,14 @@ if (isset($_POST["submit"])) {
     <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
     <!-- MY CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="hold-transition login-page">
+<body class="hold-transition login-page 
+">
     <div class="login-box shadow-lg ">
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
@@ -82,7 +84,7 @@ if (isset($_POST["submit"])) {
                     <div class="row">
                         <!-- /.col -->
                         <div class="col">
-                            <button type="submit" class="btn btn-primary btn-block" name="submit">Login</button>
+                            <button type="submit" class="swalDefaultSuccess btn btn-primary btn-block" name="submit">Login</button>
                         </div>
                         <!-- /.col -->
                     </div>
@@ -101,6 +103,8 @@ if (isset($_POST["submit"])) {
 
     <!-- jQuery -->
     <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="plugins/sweetalert2/sweetalert2.min.js"></script>
     <!-- jquery-validation -->
     <script src="plugins/jquery-validation/jquery.validate.min.js"></script>
     <script src="plugins/jquery-validation/additional-methods.min.js"></script>
@@ -108,6 +112,23 @@ if (isset($_POST["submit"])) {
     <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="dist/js/adminlte.min.js"></script>
+
+    <!-- Sweet Alert -->
+    <script>
+        <?php if (isset($berhasil)) : ?>
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Login Berhasil',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            setTimeout(() => {
+                window.location.href = "index.php"
+            }, 1700)
+        <?php endif; ?>
+    </script>
+
     <!-- Show Password dan Ubah type username ke text -->
     <script>
         function showPassword() {
@@ -119,48 +140,8 @@ if (isset($_POST["submit"])) {
             }
         }
     </script>
-    <!-- Alert -->
-    <script>
-        $(function() {
-            $('#username').attr('type', 'text')
-            $('#quickForm').validate({
-                rules: {
-                    username: {
-                        required: true,
 
 
-                    },
-                    password: {
-                        required: true,
-
-                    }
-
-                },
-                messages: {
-                    username: {
-                        required: "Nama tidak boleh kosong!"
-
-                    },
-                    password: {
-                        required: "Password tidak boleh kosong!",
-
-                    }
-
-                },
-                errorElement: 'span',
-                errorPlacement: function(error, element) {
-                    error.addClass('invalid-feedback');
-                    element.closest('.form-group').append(error);
-                },
-                highlight: function(element, errorClass, validClass) {
-                    $(element).addClass('is-invalid');
-                },
-                unhighlight: function(element, errorClass, validClass) {
-                    $(element).removeClass('is-invalid');
-                }
-            });
-        });
-    </script>
 </body>
 
 </html>
