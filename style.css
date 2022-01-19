@@ -18,7 +18,7 @@
   color: #fff !important;
 }
 
-/* untuk login */
+/* untuk login.php */
 /* mengubah warna X alert */
 .ubah-warna-alert {
   opacity: 0.9 !important;
@@ -29,6 +29,24 @@
   color: rgb(0, 0, 0) !important;
   text-shadow: none;
 }
+
+/* untuk index.php */
+@media screen and (max-width: 576px) {
+  .h5-responsive-index {
+    font-size: 15px;
+  }
+}
+/* Untuk anggota.php */
+@media screen and (max-width: 576px) {
+  td {
+    font-size: 13px;
+  }
+
+  th {
+    font-size: 13px;
+  }
+}
+
 @media screen and (max-width: 576px) {
   .tes {
     margin-top: 0px !important;
