@@ -1,5 +1,7 @@
 <?php
 require 'session.php';
+require 'functions.php';
+$semuaAnggota = query("SELECT * FROM anggota");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,6 +32,7 @@ require 'session.php';
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
 
+  <!-- MY CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -183,13 +186,62 @@ require 'session.php';
       <!-- Main content -->
       <section class="content">
         <div class="container-fluid">
+          <!-- Small boxes (Stat box) -->
+          <div class="row">
+            <div class="col-lg-4 col-6">
+              <!-- small box -->
+              <div class="small-box bg-info">
+                <div class="inner">
+                  <h3><?= count($semuaAnggota); ?></h3>
+
+                  <p>Jumlah Anggota</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-person-add"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-4 col-6">
+              <!-- small box -->
+              <div class="small-box bg-success">
+                <div class="inner">
+                  <h3>5</h3>
+
+                  <p>Jumlah Departemen</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-home"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-6">
+              <!-- small box -->
+              <div class="small-box bg-danger">
+                <div class="inner">
+                  <h3>Rp. 3.000.000</h3>
+
+                  <p>Total keuangan</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-cash"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+            <!-- ./col -->
+          </div>
+          <!-- /.row -->
           <div class="row">
             <div class="col-12">
               <div class="card">
                 <div class="card-body">
-                  <div class="p-5 m-2 alert alert-primary" role="alert">
-                    <h5>Selamat Datang <span class="teks">Admin!</span> </h5>
-                    <h5>Disini kamu dapat melihat dan mengatur sistem database BEMP STATISTIKA UNJ</h5>
+                  <div class="m-1 pt-3 alert alert-primary" role="alert">
+                    <h5 class="h5-responsive-index ">Selamat Datang <span class="teks">Admin!</span> </h5>
+                    <h5 class="h5-responsive-index ">Disini kamu dapat melihat dan mengatur sistem database BEMP STATISTIKA UNJ</h5>
                   </div>
                 </div>
                 <!-- /.card-body -->
@@ -197,7 +249,7 @@ require 'session.php';
 
             </div>
           </div>
-        </div>
+
       </section>
       <!-- /.content -->
     </div>
