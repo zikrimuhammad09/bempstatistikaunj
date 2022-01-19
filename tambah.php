@@ -1,3 +1,6 @@
+<?php
+require 'session.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -193,12 +196,12 @@
                                 <form id="quickForm">
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="exampleInputName1">Nama Lengkap</label>
-                                            <input type="name" class="form-control " id="exampleInputName1" name="name" placeholder="Masukkan Nama Lengkap">
+                                            <label for="exampleInputName">Nama Lengkap</label>
+                                            <input type="password" class="form-control " id="exampleInputName" name="name" placeholder="Masukkan Nama Lengkap">
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputNim1">NIM</label>
-                                            <input type="nim" class="form-control" id="exampleInputNim1" name="nim" placeholder="Masukkan NIM">
+                                            <label for="exampleInputNim">NIM</label>
+                                            <input type="password" class="form-control" id="exampleInputNim" name="nim" placeholder="Masukkan NIM">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleSelectRounded1">Angkatan</label>
@@ -326,11 +329,8 @@
     </script>
     <script>
         $(function() {
-            $.validator.setDefaults({
-                submitHandler: function() {
-                    alert("Data berhasil ditambahkan!");
-                }
-            });
+            $('#exampleInputName').attr("type", "text")
+            $('#exampleInputNim').attr("type", "text")
             $('#quickForm').validate({
                 rules: {
                     email: {
