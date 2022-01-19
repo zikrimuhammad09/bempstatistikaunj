@@ -34,6 +34,8 @@ if (isset($_POST["submit"])) {
     <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <!-- MY CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="hold-transition login-page">
@@ -47,8 +49,11 @@ if (isset($_POST["submit"])) {
                 <div class="card-body ">
                     <div class="form-group">
                         <?php if (isset($error)) : ?>
-                            <div class="alert alert-danger" role="alert">
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                 Username / Password salah!
+                                <button type="button" class="close ubah-warna-alert" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
                         <?php endif; ?>
                         <div class="input-group ">
