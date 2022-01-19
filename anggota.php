@@ -1,5 +1,10 @@
 <?php
 require 'session.php';
+require 'functions.php';
+$semuaAnggota = query("SELECT * FROM anggota");
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -172,8 +177,8 @@ require 'session.php';
                         <div class="col-12">
                             <div class="card m-3 mt-4">
                                 <div class="card-body">
-                                    <h1>Daftar Anggota BEMP STATISTIKA 2022</h1>
-                                    <div class=" row d-flex justify-content-between">
+                                    <h2>Daftar Anggota BEMP STATISTIKA 2022</h2>
+                                    <div class=" row d-flex  justify-content-between">
                                         <div class="tes mt-5 col-sm-9">
                                             <a href="tambah.php"><button class="btn btn-primary">Tambah Data</button></a>
 
@@ -187,32 +192,23 @@ require 'session.php';
                                         <table id="example2" class="mt-3 table table-bordered table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th>Rendering engine</th>
-                                                    <th>Browser</th>
-                                                    <th>Platform(s)</th>
-                                                    <th>Engine version</th>
-                                                    <th>CSS grade</th>
+                                                    <th>Nama Lengkap</th>
+                                                    <th>Nim</th>
+                                                    <th>Angkatan</th>
+                                                    <th>Departemen</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>Trident</td>
-                                                    <td>Internet
-                                                        Explorer 4.0
-                                                    </td>
-                                                    <td>Win 95+</td>
-                                                    <td> 4</td>
-                                                    <td>X</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Trident</td>
-                                                    <td>Internet
-                                                        Explorer 5.0
-                                                    </td>
-                                                    <td>Win 95+</td>
-                                                    <td>5</td>
-                                                    <td>C</td>
-                                                </tr>
+                                                <?php foreach ($semuaAnggota as $anggota) : ?>
+                                                    <tr>
+                                                        <td><?= $anggota["nama"]; ?></td>
+                                                        <td><?= $anggota["nim"]; ?>
+                                                        </td>
+                                                        <td><?= $anggota["angkatan"]; ?></td>
+                                                        <td><?= $anggota["departemen"]; ?></td>
+                                                    </tr>
+                                                <?php endforeach; ?>
+                                            </tbody>
                                         </table>
                                     </div>
                                 </div>
