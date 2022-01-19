@@ -23,6 +23,8 @@ require 'session.php';
     <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- JQVMap -->
     <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
     <!-- overlayScrollbars -->
@@ -216,6 +218,9 @@ require 'session.php';
                                             <label for="exampleSelectRounded0">Departemen</label>
                                             <select class="custom-select rounded-2" id="exampleSelectRounded0" name="departemen">
                                                 <option value="" selected>Pilih Departemen</option>
+                                                <option value="Ketua">Ketua</option>
+                                                <option value="Sekretaris">Sekretaris</option>
+                                                <option value="Bendahara">Bendahara</option>
                                                 <option value="Kaderisasi">Kaderisasi</option>
                                                 <option value="Advokasi">Advokasi</option>
                                                 <option value="Rohis">Rohis</option>
@@ -270,6 +275,8 @@ require 'session.php';
     </script>
     <!-- Bootstrap 4 -->
     <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="plugins/sweetalert2/sweetalert2.min.js"></script>
     <!-- jquery-validation -->
     <script src="plugins/jquery-validation/jquery.validate.min.js"></script>
     <script src="plugins/jquery-validation/additional-methods.min.js"></script>
