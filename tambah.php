@@ -1,5 +1,17 @@
 <?php
 require 'session.php';
+require 'functions.php';
+if (isset($_POST["submit"])) {
+    $hasil = tambah($_POST);
+    if ($hasil > 0) {
+        $berhasil = True;
+    } else {
+        echo "<scrippt> alert('data gagal ditambahkan') </script>";
+        header('Location: tambah.php');
+        exit();
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -195,7 +207,7 @@ require 'session.php';
                                 </div>
                                 <!-- /.card-header -->
                                 <!-- form start -->
-                                <form id="quickForm">
+                                <form id="quickForm" method="post">
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="exampleInputName">Nama Lengkap</label>
@@ -238,7 +250,7 @@ require 'session.php';
                                     <!-- /.card-body -->
 
                                     <div class="card-footer">
-                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
 
@@ -304,6 +316,22 @@ require 'session.php';
     <script src="dist/js/pages/dashboard.js"></script>
 
     <script>
+        // Sweet Alert Berhasil
+        <?php if (isset($berhasil)) : ?>
+            $(".preloader").remove();
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Data Berhasil Ditambahkan!',
+                showConfirmButton: false,
+                timer: 1500
+            })
+
+
+        <?php endif; ?>
+
+
+
         //Dark Mode
         let darkmode = document.getElementById('darkmode');
         let iconmoon = darkmode.querySelector('.fas')
