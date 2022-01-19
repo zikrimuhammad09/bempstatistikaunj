@@ -18,6 +18,17 @@
   color: #fff !important;
 }
 
+/* untuk login */
+/* mengubah warna X alert */
+.ubah-warna-alert {
+  opacity: 0.9 !important;
+  color: rgb(255, 255, 255) !important;
+}
+.ubah-warna-alert:hover {
+  opacity: 1 !important;
+  color: rgb(0, 0, 0) !important;
+  text-shadow: none;
+}
 @media screen and (max-width: 576px) {
   .tes {
     margin-top: 0px !important;
