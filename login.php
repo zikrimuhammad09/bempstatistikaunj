@@ -131,6 +131,7 @@ if (isset($_POST["submit"])) {
 
     <!-- Show Password dan Ubah type username ke text -->
     <script>
+       $('#username').attr("type", "text");
         function showPassword() {
             if ($('#password').attr('type') == "password") {
                 $("#password").attr("type", "text");
