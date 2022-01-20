@@ -51,10 +51,7 @@ if (isset($_POST["submit"])) {
 <body class="hold-transition sidebar-mini layout-navbar-fixed layout-fixed">
     <div class="wrapper">
 
-        <!-- Preloader -->
-        <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="img/LOGO BEMP STAT UNJ.png" alt="BEMP STATISTIKA" height="200" width="200">
-        </div>
+
 
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand  navbar-light">
@@ -180,12 +177,14 @@ if (isset($_POST["submit"])) {
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Tambah Anggota</h1>
+                            <h1 class="m-0">Tambah Data</h1>
 
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="anggota.php">Kembali</a></li>
+                                <li class="breadcrumb-item"><a href="anggota.php">Daftar Anggota</a></li>
+                                <li class="breadcrumb-item active">Tambah Data</li>
+
                             </ol>
                         </div>
 
@@ -211,7 +210,7 @@ if (isset($_POST["submit"])) {
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="exampleInputName">Nama Lengkap</label>
-                                            <input type="password" class="form-control " id="exampleInputName" name="name" placeholder="Masukkan Nama Lengkap">
+                                            <input type="password" class="form-control " id="exampleInputName" name="name" autofocus placeholder="Masukkan Nama Lengkap">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputNim">NIM</label>
@@ -250,7 +249,8 @@ if (isset($_POST["submit"])) {
                                     <!-- /.card-body -->
 
                                     <div class="card-footer">
-                                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                                        <button type="submit" name="submit" class="btn btn-primary mr-3">Submit</button>
+                                        <a href="anggota.php"><button type="button" class="btn btn-primary">Kembali</button></a>
                                     </div>
                                 </form>
 
@@ -318,7 +318,7 @@ if (isset($_POST["submit"])) {
     <script>
         // Sweet Alert Berhasil
         <?php if (isset($berhasil)) : ?>
-            $(".preloader").remove();
+
             Swal.fire({
                 position: 'center',
                 icon: 'success',
