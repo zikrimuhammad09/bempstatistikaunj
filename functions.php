@@ -32,3 +32,25 @@ function tambah($data)
     mysqli_query($conn, $query);
     return mysqli_affected_rows($conn);
 }
+
+function hapus($hapus)
+{
+    global $conn;
+    $id = $hapus["id"];
+    mysqli_query($conn, "DELETE FROM anggota WHERE id = '$id'");
+    return mysqli_affected_rows($conn);
+}
+
+function edit($edit)
+{
+    global $conn;
+    $name = htmlspecialchars($edit["name"]);
+    $nim = htmlspecialchars($edit["nim"]);
+    $angkatan = htmlspecialchars($edit["angkatan"]);
+    $departemen = htmlspecialchars($edit["departemen"]);
+    $email =  htmlspecialchars($edit["email"]);
+    $id = $edit["id"];
+    $query = "UPDATE anggota SET nama ='$name', nim = '$nim', angkatan = '$angkatan',departemen = '$departemen', email = '$email' WHERE id = '$id'";
+    mysqli_query($conn, $query);
+    return mysqli_affected_rows($conn);
+}
