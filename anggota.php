@@ -47,10 +47,7 @@ $semuaAnggota = query("SELECT * FROM anggota");
 <body class="hold-transition sidebar-mini layout-navbar-fixed layout-fixed">
     <div class="wrapper">
 
-        <!-- Preloader -->
-        <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="img/LOGO BEMP STAT UNJ.png" alt="BEMP STATISTIKA" height="200" width="200">
-        </div>
+
 
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand  navbar-light">
@@ -186,12 +183,14 @@ $semuaAnggota = query("SELECT * FROM anggota");
 
                                         </div>
                                         <div class="mt-3 col-sm-3">
-                                            <label for="fname">Search: </label>
-                                            <input type="search" id="fname" class="form-control" name="fname" autofocus>
+                                            <form method="post">
+                                                <label for="cari">Search: </label>
+                                                <input type="search" id="keyword" class="form-control" autocomplete="off" name="cari" autofocus>
+                                            </form>
 
                                         </div>
                                     </div>
-                                    <div class=" table-responsive">
+                                    <div id="container" class=" table-responsive">
                                         <table id="example2" class="mt-3 table  table-hover">
                                             <thead>
                                                 <tr>
@@ -280,32 +279,11 @@ $semuaAnggota = query("SELECT * FROM anggota");
     <script src="dist/js/demo.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="dist/js/pages/dashboard.js"></script>
-    <!-- Hapus SweetAlert2-->
-    <script>
-        $('.hapus').on('click', function(e) {
-            e.preventDefault();
-            Swal.fire({
-                title: 'Yakin ingin menghapus data?',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Hapus'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire(
-                        'Terhapus',
-                        'Data berhasil di hapus',
-                        'success'
-                    )
-                    setTimeout(() => {
-                        window.location.href = $(this).attr('href');
-                    }, 1400)
+    <script src="script.js"></script>
 
-                }
-            });
-        });
-    </script>
+
+    <!-- Hapus SweetAlert2-->
+
     <script>
         let darkmode = document.getElementById('darkmode');
         let iconmoon = darkmode.querySelector('.fas')
