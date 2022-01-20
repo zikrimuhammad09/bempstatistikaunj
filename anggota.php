@@ -26,6 +26,8 @@ $semuaAnggota = query("SELECT * FROM anggota");
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
     <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- JQVMap -->
@@ -185,17 +187,19 @@ $semuaAnggota = query("SELECT * FROM anggota");
                                         </div>
                                         <div class="mt-3 col-sm-3">
                                             <label for="fname">Search: </label>
-                                            <input type="text" id="fname" class="form-control" name="fname">
+                                            <input type="search" id="fname" class="form-control" name="fname" autofocus>
+
                                         </div>
                                     </div>
                                     <div class=" table-responsive">
-                                        <table id="example2" class="mt-3 table table-bordered table-hover">
+                                        <table id="example2" class="mt-3 table  table-hover">
                                             <thead>
                                                 <tr>
                                                     <th>Nama Lengkap</th>
                                                     <th>Nim</th>
                                                     <th>Angkatan</th>
                                                     <th>Departemen</th>
+                                                    <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -206,6 +210,12 @@ $semuaAnggota = query("SELECT * FROM anggota");
                                                         </td>
                                                         <td><?= $anggota["angkatan"]; ?></td>
                                                         <td><?= $anggota["departemen"]; ?></td>
+                                                        <td class="text-right py-0 align-middle">
+                                                            <div class="btn-group btn-group-sm">
+                                                                <a href="edit.php?id=<?= $anggota['id'] ?>" class="btn btn-info"><i class="fas fa-pencil-alt"></i></a>
+                                                                <a href="delete.php?id=<?= $anggota['id'] ?>" class=" btn btn-danger hapus"><i class=" fas fa-trash"></i></a>
+                                                            </div>
+                                                        </td>
                                                     </tr>
                                                 <?php endforeach; ?>
                                             </tbody>
@@ -236,11 +246,13 @@ $semuaAnggota = query("SELECT * FROM anggota");
 
     <!-- jQuery -->
     <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="plugins/sweetalert2/sweetalert2.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
     <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
-        $.widget.bridge('uibutton', $.ui.button)
+        $.widget.bridge('uibutton', $.ui.button);
     </script>
     <!-- Bootstrap 4 -->
     <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -268,7 +280,32 @@ $semuaAnggota = query("SELECT * FROM anggota");
     <script src="dist/js/demo.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="dist/js/pages/dashboard.js"></script>
+    <!-- Hapus SweetAlert2-->
+    <script>
+        $('.hapus').on('click', function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Yakin ingin menghapus data?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Hapus'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        'Terhapus',
+                        'Data berhasil di hapus',
+                        'success'
+                    )
+                    setTimeout(() => {
+                        window.location.href = $(this).attr('href');
+                    }, 1400)
 
+                }
+            });
+        });
+    </script>
     <script>
         let darkmode = document.getElementById('darkmode');
         let iconmoon = darkmode.querySelector('.fas')
