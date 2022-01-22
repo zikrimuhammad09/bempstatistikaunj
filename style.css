@@ -1,3 +1,21 @@
+/* navbar */
+
+a.user-profile {
+  color: #5e6974 !important;
+}
+.user-profile img {
+  width: 29px !important;
+  height: 29px !important;
+  border-radius: 50% !important;
+  margin-right: 10px !important;
+}
+
+.top_nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* ------------------- */
 .teks {
   font-weight: 900 !important;
 }
