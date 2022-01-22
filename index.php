@@ -84,7 +84,7 @@ $semuaAnggota = query("SELECT * FROM anggota");
     <!-- Main Sidebar Container -->
     <aside id="panellogout" class=" sidebar-no-expand main-sidebar  sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-      <a href="index.php" class="brand-link">
+      <a href="#" class="brand-link">
         <img src="img/LOGO BEMP STAT UNJ.png" alt="BEMP STATISTIKA Logo" class="brand-image img-circle elevation-3">
         <span class="brand-text font-weight-light">BEMP STATISTIKA UNJ</span>
       </a>
@@ -102,7 +102,7 @@ $semuaAnggota = query("SELECT * FROM anggota");
 
             <a href="#" class=" d-block dropdown-toggle" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">Admin</a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="logout.php">Logout</a>
+              <a class="dropdown-item" href="logout">Logout</a>
             </div>
 
 
@@ -128,7 +128,7 @@ $semuaAnggota = query("SELECT * FROM anggota");
 
             </li>
             <li class="nav-item ">
-              <a href="anggota.php" class="nav-link ">
+              <a href="anggota" class="nav-link ">
                 <i class="nav-icon fas fa-book "></i>
                 <p>
                   Daftar Anggota
@@ -150,7 +150,7 @@ $semuaAnggota = query("SELECT * FROM anggota");
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="kategori.php" class="nav-link">
+                  <a href="kategori" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Kategori</p>
                   </a>
@@ -201,7 +201,7 @@ $semuaAnggota = query("SELECT * FROM anggota");
                 <div class="icon">
                   <i class="ion ion-person-add"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="anggota" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->
@@ -216,7 +216,7 @@ $semuaAnggota = query("SELECT * FROM anggota");
                 <div class="icon">
                   <i class="ion ion-home"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="anggota" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
 
@@ -224,7 +224,7 @@ $semuaAnggota = query("SELECT * FROM anggota");
               <!-- small box -->
               <div class="small-box bg-danger">
                 <div class="inner">
-                  <h3>Rp. 3.000.000</h3>
+                  <h3 class="h4-responsive-juta">Rp. 3.000.000</h3>
 
                   <p>Total keuangan</p>
                 </div>
@@ -241,7 +241,7 @@ $semuaAnggota = query("SELECT * FROM anggota");
             <div class="col-12">
               <div class="card">
                 <div class="card-body">
-                  <div class="m-1 pt-3 alert alert-primary" role="alert">
+                  <div class=" pt-3 alert alert-primary" role="alert">
                     <h5 class="h5-responsive-index ">Selamat Datang <span class="teks">Admin!</span> </h5>
                     <h5 class="h5-responsive-index ">Disini kamu dapat melihat dan mengatur sistem database BEMP STATISTIKA UNJ</h5>
                   </div>
@@ -310,17 +310,26 @@ $semuaAnggota = query("SELECT * FROM anggota");
     let iconmoon = darkmode.querySelector('.fas')
     let navbar = document.getElementsByClassName('main-header')[0];
     let logout = document.getElementById('panellogout');
+    if (localStorage.getItem('is-dark')) {
+      document.body.classList.add('dark-mode');
+      iconmoon.classList.add('fa-sun');
+      iconmoon.classList.remove('fa-moon');
+      navbar.classList.add('navbar-dark');
+      navbar.classList.remove('navbar-light');
+      logout.classList.add('modedark')
+    }
     darkmode.addEventListener('click', () => {
 
       if (document.body.classList.contains('dark-mode')) {
         iconmoon.classList.add('fa-moon');
         iconmoon.classList.remove('fa-sun');
-
+        localStorage.removeItem('is-dark');
 
 
       } else {
         iconmoon.classList.add('fa-sun');
         iconmoon.classList.remove('fa-moon');
+        localStorage.setItem('is-dark', 1);
 
       }
 
