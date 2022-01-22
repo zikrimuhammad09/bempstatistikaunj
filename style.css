@@ -26,6 +26,7 @@ a.user-profile {
   align-items: center;
 }
 /* ------------------- */
+
 .teks {
   font-weight: 900 !important;
 }
@@ -57,6 +58,14 @@ a.user-profile {
   color: rgb(0, 0, 0) !important;
   text-shadow: none;
 }
+
+.box-login {
+  min-height: 100vh !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+/* -------- */
 
 /* untuk index.php */
 @media screen and (max-width: 576px) {
