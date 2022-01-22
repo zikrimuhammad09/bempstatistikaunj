@@ -37,10 +37,7 @@ require 'session.php';
 <body class="hold-transition sidebar-mini layout-navbar-fixed layout-fixed">
     <div class="wrapper">
 
-        <!-- Preloader -->
-        <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="img/LOGO BEMP STAT UNJ.png" alt="BEMP STATISTIKA" height="200" width="200">
-        </div>
+
 
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand  navbar-light">
@@ -50,7 +47,7 @@ require 'session.php';
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Home</a>
+                    <a href="index.php" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link">Contact</a>
@@ -80,7 +77,7 @@ require 'session.php';
         <!-- Main Sidebar Container -->
         <aside id="panellogout" class="sidebar-no-expand main-sidebar  sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index.php" class="brand-link">
+            <a href="index" class="brand-link">
                 <img src="img/LOGO BEMP STAT UNJ.png" alt="BEMP STATISTIKA Logo" class="brand-image img-circle elevation-3">
                 <span class="brand-text font-weight-light">BEMP STATISTIKA UNJ</span>
             </a>
@@ -95,7 +92,7 @@ require 'session.php';
                     <div class="info">
                         <a href="#" class=" d-block dropdown-toggle" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">Admin</a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="logout.php">Logout</a>
+                            <a class="dropdown-item" href="logout">Logout</a>
                         </div>
                     </div>
                 </div>
@@ -108,7 +105,7 @@ require 'session.php';
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item ">
-                            <a href="index.php" class="nav-link ">
+                            <a href="index" class="nav-link ">
                                 <i class="nav-icon fas fa-home"></i>
                                 <p>
                                     Halaman Admin
@@ -118,7 +115,7 @@ require 'session.php';
 
                         </li>
                         <li class="nav-item ">
-                            <a href="anggota.php" class="nav-link  ">
+                            <a href="anggota" class="nav-link  ">
                                 <i class="nav-icon fas fa-book "></i>
                                 <p>
                                     Daftar Anggota
@@ -140,7 +137,7 @@ require 'session.php';
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item ">
-                                    <a href="kategori.php" class="nav-link active">
+                                    <a href="kategori" class="nav-link active">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Kategori</p>
                                     </a>
@@ -289,16 +286,25 @@ require 'session.php';
         let iconmoon = darkmode.querySelector('.fas')
         let navbar = document.getElementsByClassName('main-header')[0];
         let logout = document.getElementById('panellogout');
+        if (localStorage.getItem('is-dark')) {
+            document.body.classList.add('dark-mode');
+            iconmoon.classList.add('fa-sun');
+            iconmoon.classList.remove('fa-moon');
+            navbar.classList.add('navbar-dark');
+            navbar.classList.remove('navbar-light');
+            logout.classList.add('modedark')
+        }
         darkmode.addEventListener('click', () => {
 
             if (document.body.classList.contains('dark-mode')) {
                 iconmoon.classList.add('fa-moon');
                 iconmoon.classList.remove('fa-sun');
-
+                localStorage.removeItem('is-dark');
 
             } else {
                 iconmoon.classList.add('fa-sun');
                 iconmoon.classList.remove('fa-moon');
+                localStorage.setItem('is-dark', 1);
 
             }
 
