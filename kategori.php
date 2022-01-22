@@ -55,11 +55,7 @@ require 'session.php';
             </ul>
 
             <!-- Right navbar links -->
-            <ul class="navbar-nav ml-auto">
-
-
-
-
+            <ul class="navbar-nav top_nav pr-4 ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                         <i class="fas fa-expand-arrows-alt"></i>
@@ -69,6 +65,23 @@ require 'session.php';
                     <a class="nav-link" href="#">
                         <i class="fas fa-moon"></i>
                     </a>
+                </li>
+                <li class="nav-item dropdown open" style="padding-left: 15px;">
+                    <a href="" class="nav-link user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+                        <img src="dist/img/AdminLTELogo.png" class=" elevation-1" alt=""> Admin
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-user dropdown-menu-right">
+
+                        <a class="dropdown-item" href="logout"> <i class="fas fa-sign-out-alt mr-2"></i>
+                            Logout
+                        </a>
+
+                        <form id="logout-form" action="http://fierce-savannah-58125.herokuapp.com/logout" method="POST" class="d-none">
+                            <input type="hidden" name="_token" value="4cp2aLK8b6cNeEI7Urjb5x0lUH4rgghuTgxkM93P">
+                        </form>
+
+                    </div>
+
                 </li>
             </ul>
         </nav>
@@ -85,15 +98,13 @@ require 'session.php';
             <!-- Sidebar -->
             <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="user-panel mt-3 pb-1 d-flex">
                     <div class="image">
                         <img src="dist/img/AdminLTELogo.png" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class=" d-block dropdown-toggle" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">Admin</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="logout">Logout</a>
-                        </div>
+                        <a href="#" class=" d-block ">Admin</a>
+                        <p class="text-gray">Administrator</p>
                     </div>
                 </div>
 
