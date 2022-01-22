@@ -16,3 +16,4 @@ Fitur:
 3. Tambah, delete, update Data
 4. Dark Mode
 5. Live Search
+6. FullScreen
