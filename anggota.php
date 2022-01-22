@@ -12,9 +12,12 @@ $semuaAnggota = query("SELECT * FROM anggota");
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
     <title>
         BEMP STATISTIKA UNJ
     </title>
+
     <!-- Icon Website -->
     <link rel="icon" href="img/LOGO BEMP STAT UNJ.png">
 
@@ -42,6 +45,8 @@ $semuaAnggota = query("SELECT * FROM anggota");
     <!-- summernote -->
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
     <link rel="stylesheet" href="style.css">
+
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-navbar-fixed layout-fixed">
@@ -57,7 +62,7 @@ $semuaAnggota = query("SELECT * FROM anggota");
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Home</a>
+                    <a href="index" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link">Contact</a>
@@ -87,7 +92,7 @@ $semuaAnggota = query("SELECT * FROM anggota");
         <!-- Main Sidebar Container -->
         <aside id="panellogout" class="sidebar-no-expand main-sidebar  sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index.php" class="brand-link">
+            <a href="index" class="brand-link">
                 <img src="img/LOGO BEMP STAT UNJ.png" alt="BEMP STATISTIKA Logo" class="brand-image img-circle elevation-3">
                 <span class="brand-text font-weight-light">BEMP STATISTIKA UNJ</span>
             </a>
@@ -102,7 +107,7 @@ $semuaAnggota = query("SELECT * FROM anggota");
                     <div class="info">
                         <a href="#" class=" d-block dropdown-toggle" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">Admin</a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="logout.php">Logout</a>
+                            <a class="dropdown-item" href="logout">Logout</a>
                         </div>
                     </div>
                 </div>
@@ -115,7 +120,7 @@ $semuaAnggota = query("SELECT * FROM anggota");
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item ">
-                            <a href="index.php" class="nav-link">
+                            <a href="index" class="nav-link">
                                 <i class="nav-icon fas fa-home"></i>
                                 <p>
                                     Halaman Admin
@@ -125,7 +130,7 @@ $semuaAnggota = query("SELECT * FROM anggota");
 
                         </li>
                         <li class="nav-item ">
-                            <a href="anggota.php" class="nav-link active ">
+                            <a href="anggota" class="nav-link active ">
                                 <i class="nav-icon fas fa-book "></i>
                                 <p>
                                     Daftar Anggota
@@ -147,7 +152,7 @@ $semuaAnggota = query("SELECT * FROM anggota");
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="kategori.php" class="nav-link">
+                                    <a href="kategori" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Kategori</p>
                                     </a>
@@ -174,12 +179,12 @@ $semuaAnggota = query("SELECT * FROM anggota");
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
-                            <div class="card m-3 mt-4">
+                            <div class="card  mt-4">
                                 <div class="card-body">
                                     <h2>Daftar Anggota BEMP STATISTIKA 2022</h2>
                                     <div class=" row d-flex  justify-content-between">
                                         <div class="tes mt-5 col-sm-9">
-                                            <a href="tambah.php"><button class="btn btn-primary">Tambah Data</button></a>
+                                            <a href="tambah"><button class="btn btn-primary">Tambah Data</button></a>
 
                                         </div>
                                         <div class="mt-3 col-sm-3">
@@ -211,7 +216,7 @@ $semuaAnggota = query("SELECT * FROM anggota");
                                                         <td><?= $anggota["departemen"]; ?></td>
                                                         <td class="text-right py-0 align-middle">
                                                             <div class="btn-group btn-group-sm">
-                                                                <a href="edit.php?id=<?= $anggota['id'] ?>" class="btn btn-info"><i class="fas fa-pencil-alt"></i></a>
+                                                                <a href="edit?id=<?= $anggota['id'] ?>" class="btn btn-info"><i class="fas fa-pencil-alt"></i></a>
                                                                 <a href="delete.php?id=<?= $anggota['id'] ?>" class=" btn btn-danger hapus"><i class=" fas fa-trash"></i></a>
                                                             </div>
                                                         </td>
@@ -281,24 +286,31 @@ $semuaAnggota = query("SELECT * FROM anggota");
     <script src="dist/js/pages/dashboard.js"></script>
     <script src="script.js"></script>
 
-
-    <!-- Hapus SweetAlert2-->
-
     <script>
         let darkmode = document.getElementById('darkmode');
         let iconmoon = darkmode.querySelector('.fas')
         let navbar = document.getElementsByClassName('main-header')[0];
         let logout = document.getElementById('panellogout');
+        if (localStorage.getItem('is-dark')) {
+            document.body.classList.add('dark-mode');
+            iconmoon.classList.add('fa-sun');
+            iconmoon.classList.remove('fa-moon');
+            navbar.classList.add('navbar-dark');
+            navbar.classList.remove('navbar-light');
+            logout.classList.add('modedark')
+        }
         darkmode.addEventListener('click', () => {
 
             if (document.body.classList.contains('dark-mode')) {
                 iconmoon.classList.add('fa-moon');
                 iconmoon.classList.remove('fa-sun');
+                localStorage.removeItem('is-dark');
 
 
             } else {
                 iconmoon.classList.add('fa-sun');
                 iconmoon.classList.remove('fa-moon');
+                localStorage.setItem('is-dark', 1);
 
             }
 
