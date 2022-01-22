@@ -1,8 +1,18 @@
 /* navbar */
 
 a.user-profile {
-  color: #5e6974 !important;
+  color: #5e6974;
 }
+
+.navbar-expand .navbar-nav .open .nav-link {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+.main-header .open .nav-link {
+  height: auto !important;
+}
+
 .user-profile img {
   width: 29px !important;
   height: 29px !important;
