@@ -74,7 +74,7 @@ $semuaAnggota = query("SELECT * FROM anggota");
           </a>
         </li>
         <li class="nav-item dropdown open" style="padding-left: 15px;">
-          <a href="" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+          <a href="" class="nav-link user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
             <img src="dist/img/AdminLTELogo.png" class=" elevation-1" alt=""> Admin
           </a>
           <div class="dropdown-menu dropdown-menu-user dropdown-menu-right">
