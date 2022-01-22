@@ -44,8 +44,7 @@ if (isset($_POST["submit"])) {
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="hold-transition login-page 
-">
+<body class="hold-transition box-login">
     <div class="login-box shadow-lg ">
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
