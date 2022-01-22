@@ -2,12 +2,17 @@
 session_start();
 require 'functions.php';
 
+if (isset($_SESSION["login"])) {
+    header("Location: index");
+    exit;
+}
+
 if (isset($_POST["submit"])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
     $cek = login("SELECT * FROM admin WHERE username = '$username' AND password = '$password'");
     if (mysqli_num_rows($cek) > 0) {
-        $_SESSION["login"] = True;
+        $_SESSION["login"] = true;
         $berhasil = True;
     } else {
         $error = True;
@@ -59,7 +64,7 @@ if (isset($_POST["submit"])) {
                             </div>
                         <?php endif; ?>
                         <div class="input-group ">
-                            <input type="password" class="form-control " placeholder="Username" name="username" id="username">
+                            <input type="password" class="form-control " placeholder="Username" name="username" id="username" autocomplete="off">
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-user"></span>
@@ -124,17 +129,19 @@ if (isset($_POST["submit"])) {
                 timer: 1500
             })
             setTimeout(() => {
-                window.location.href = "index.php"
+                window.location.href = "index"
             }, 1700)
         <?php endif; ?>
     </script>
 
     <!-- Show Password dan Ubah type username ke text -->
     <script>
-       $('#username').attr("type", "text");
+        $('#username').attr("type", "text");
+
         function showPassword() {
             if ($('#password').attr('type') == "password") {
                 $("#password").attr("type", "text");
+
 
             } else {
                 $("#password").attr("type", "password");
