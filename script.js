@@ -1,25 +1,26 @@
 // Dengan Jquery
 $(document).ready(() => {
+  //event ketika menghapus data
+  $(document).on("click", ".hapus", function (e) {
+    e.preventDefault();
+    Swal.fire({
+      title: "Yakin ingin menghapus data?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Hapus",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $("#container").load("ajax/" + $(this).attr("href"));
+      }
+    });
+  });
   // event ketika keyword ditulis
   $("#keyword").on("keyup", () => {
-    $("#container").load("ajax/search.php?keyword=" + $("#keyword").val());
-  });
-});
-
-//event ketika menghapus data
-$(".hapus").on("click", function (e) {
-  e.preventDefault();
-  Swal.fire({
-    title: "Yakin ingin menghapus data?",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Hapus",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      $("#container").load("ajax/" + $(this).attr("href"));
-    }
+    $("#container").load(
+      "ajax/search.php?keyword=" + encodeURIComponent($("#keyword").val())
+    );
   });
 });
 
