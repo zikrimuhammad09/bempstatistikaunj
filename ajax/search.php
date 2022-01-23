@@ -1,4 +1,5 @@
 <?php
+require '../session.php';
 require '../functions.php';
 $keyword = $_GET["keyword"];
 $query = "SELECT * FROM anggota WHERE nama LIKE '%$keyword%' OR nim LIKE '%$keyword%' OR angkatan LIKE '%$keyword%' OR departemen LIKE '%$keyword%' ";
@@ -15,6 +16,12 @@ $semuaAnggota = query($query);
         </tr>
     </thead>
     <tbody>
+        <?php if (!$semuaAnggota) : ?>
+            <tr>
+                <td colspan="5" class="bg-danger text-center font-weight-bold">Data tidak ditemukan !</td>
+
+            </tr>
+        <?php endif; ?>
         <?php foreach ($semuaAnggota as $anggota) : ?>
             <tr>
                 <td><?= $anggota["nama"]; ?></td>
@@ -29,6 +36,7 @@ $semuaAnggota = query($query);
                     </div>
                 </td>
             </tr>
+
         <?php endforeach; ?>
     </tbody>
 </table>
