@@ -89,11 +89,6 @@ if (isset($_POST["submit"])) {
                         <a class="dropdown-item" href="logout"> <i class="fas fa-sign-out-alt mr-2"></i>
                             Logout
                         </a>
-
-                        <form id="logout-form" action="http://fierce-savannah-58125.herokuapp.com/logout" method="POST" class="d-none">
-                            <input type="hidden" name="_token" value="4cp2aLK8b6cNeEI7Urjb5x0lUH4rgghuTgxkM93P">
-                        </form>
-
                     </div>
 
                 </li>
@@ -102,7 +97,7 @@ if (isset($_POST["submit"])) {
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <aside id="panellogout" class="sidebar-no-expand main-sidebar  sidebar-dark-primary elevation-4">
+        <aside id="panellogout" class=" main-sidebar  sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="index" class="brand-link">
                 <img src="img/LOGO BEMP STAT UNJ.png" alt="BEMP STATISTIKA Logo" class="brand-image img-circle elevation-3">
@@ -327,22 +322,6 @@ if (isset($_POST["submit"])) {
     <script src="dist/js/pages/dashboard.js"></script>
 
     <script>
-        // Sweet Alert Berhasil
-        <?php if (isset($berhasil)) : ?>
-
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Data Berhasil Ditambahkan!',
-                showConfirmButton: false,
-                timer: 1500
-            })
-
-
-        <?php endif; ?>
-
-
-
         //Dark Mode
         let darkmode = document.getElementById('darkmode');
         let iconmoon = darkmode.querySelector('.fas')
@@ -440,6 +419,20 @@ if (isset($_POST["submit"])) {
                 }
             });
         });
+
+        // Sweet Alert Berhasil
+        <?php if (isset($berhasil)) : ?>
+
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Data Berhasil Ditambahkan!',
+                showConfirmButton: false,
+                timer: 1500
+            })
+
+
+        <?php endif; ?>
     </script>
 </body>
 
